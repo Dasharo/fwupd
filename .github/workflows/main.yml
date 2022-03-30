@@ -1,45 +1,18 @@
 name: Continuous Integration
 on:
   push:
-    branches: [ main ]
+    branches: [ dasharo-release ]
   pull_request:
-    branches: [ main ]
+    branches:
+      - dasharo-develop
+      - dasharo-release
 
 jobs:
-  pre-commit:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Refresh dependencies
-        run: sudo apt update
-      - name: Install dependencies
-        run: sudo apt install shellcheck clang-format -y
-      - name: Run pre-commit hooks
-        run: |
-          ./contrib/setup
-          source venv/bin/activate
-          sed -i "/no-commit-to-branch/,+1d" .pre-commit-config.yaml
-          pre-commit run --hook-stage commit --all-files
-  abi:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Refresh dependencies
-        run: sudo apt update
-      - name: Install dependencies
-        run: sudo ./contrib/ci/fwupd_setup_helpers.py install-dependencies -o ubuntu --yes
-      - name: Check ABI
-        run: ./contrib/ci/check-abi $(git describe --abbrev=0 --tags) $(git rev-parse HEAD)
-
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, builder]
     strategy:
       matrix:
-        os: [fedora, debian-x86_64, arch, debian-i386, void]
+        os: [debian-x86_64]
     steps:
       - uses: actions/checkout@v2
       - name: Docker login
@@ -52,28 +25,14 @@ jobs:
           CI: true
         run: |
           echo $GITHUB_WORKSPACE
-          docker run --privileged -e CI=true -t -v $GITHUB_WORKSPACE:/github/workspace docker.pkg.github.com/fwupd/fwupd/fwupd-${{matrix.os}}:latest
+          mkdir tss
+          docker run --user "$(id -u):$(id -g)" -e CI=false -t -v tss:/usr/include/tss -v $GITHUB_WORKSPACE:/home/ubuntu/fwupd library/ubuntu:20.04 /home/ubuntu/fwupd/contrib/ci/debian.sh
 
-  fuzzing:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-    - name: Build Fuzzers
-      id: build
-      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
-      with:
-        oss-fuzz-project-name: 'fwupd'
-        dry-run: false
-    - name: Run Fuzzers
-      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
-      with:
-        oss-fuzz-project-name: 'fwupd'
-        fuzz-seconds: 300
-        dry-run: false
-    - name: Upload Crash
-      uses: actions/upload-artifact@v1
-      if: failure() && steps.build.outcome == 'success'
-      with:
-        name: artifacts
-        path: ./out/artifacts
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dasharo-fwupd
+          path: |
+            dist/
+          retention-days: 7
 

@@ -69,14 +69,19 @@ lintian ../*changes \
 	--suppress-tags arch-dependent-file-not-in-arch-specific-directory \
 	--allow-root
 
+PACKAGES=$(find .. -type f -name "*.deb" | grep -v 'fwupd-tests\|dbgsym')
+
+#place built packages in dist outside docker
+mkdir -p ../dist
+cp $PACKAGES ../dist
+
 #if invoked outside of CI
-if [ ! -f /.dockerenv ]; then
+if [ ! -f /.dockerenv || ! "$CI" - "true" ]; then
 	echo "Not running in a container, please manually install packages"
 	exit 0
 fi
 
 #test the packages install
-PACKAGES=$(find .. -type f -name "*.deb" | grep -v 'fwupd-tests\|dbgsym')
 dpkg -i $PACKAGES
 
 # copy in more non-generated data
@@ -96,7 +101,3 @@ apt purge -y fwupd \
 	     fwupd-doc \
 	     libfwupd2 \
 	     libfwupd-dev
-
-#place built packages in dist outside docker
-mkdir -p ../dist
-cp $PACKAGES ../dist
