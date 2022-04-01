@@ -26,7 +26,12 @@ jobs:
         run: |
           echo $GITHUB_WORKSPACE
           mkdir tss
-          docker run --user "$(id -u):$(id -g)" -e CI=false -t -v tss:/usr/include/tss -v $GITHUB_WORKSPACE:/home/ubuntu/fwupd library/ubuntu:20.04 /home/ubuntu/fwupd/contrib/ci/debian.sh
+          docker run --user "$(id -u):$(id -g)" -e CI=false \
+            -t -v tss:/usr/include/tss -v $GITHUB_WORKSPACE:/home/ubuntu/fwupd \
+            library/ubuntu:20.04 <<< EOF
+            /home/ubuntu/fwupd/contrib/setup
+            /home/ubuntu/fwupd/contrib/ci/debian.sh
+            EOF
 
       - name: Save build artifacts
         uses: actions/upload-artifact@v2
