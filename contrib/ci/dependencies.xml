@@ -8,6 +8,7 @@
   <dependency type="build" id="abigail-tools">
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="bash">
@@ -26,6 +27,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="bubblewrap">
@@ -39,6 +41,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="base-devel">
@@ -69,16 +72,19 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="clang">
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="clang-tools">
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="clang-format">
@@ -90,6 +96,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="gcc">
@@ -121,6 +128,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libcairo-gobject2">
@@ -139,6 +147,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libjson-glib-dev">
@@ -185,6 +194,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libpci-dev">
@@ -205,6 +215,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="fonts-noto">
@@ -228,6 +239,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="devscripts">
@@ -237,6 +249,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="debhelper">
@@ -252,6 +265,7 @@
         <version>(>= 12)</version>
       </control>
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="dbus-x11">
@@ -267,6 +281,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="dconf">
@@ -286,6 +301,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="intltool">
@@ -300,6 +316,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libfreetype6-dev">
@@ -318,6 +335,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="fontconfig">
@@ -335,6 +353,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libflashrom-dev">
@@ -374,6 +393,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="gettext">
@@ -463,6 +483,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libglib2.0-doc">
@@ -472,6 +493,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libglib2.0-dev">
@@ -525,6 +547,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="gnome-desktop-testing">
@@ -537,6 +560,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="gnutls-dev">
@@ -558,6 +582,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="gnutls-bin">
@@ -579,6 +604,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <!-- TODO: Drop build dependency after switching to gidoc-gen -->
@@ -600,6 +626,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="jq">
@@ -653,6 +680,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="void">
       <package>libjcat-devel</package>
@@ -671,6 +699,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libarchive-dev">
@@ -689,6 +718,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="void">
       <package>libarchive-devel</package>
@@ -767,6 +797,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="void">
       <package>gcab-devel</package>
@@ -782,6 +813,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libgudev-1.0-dev">
@@ -800,6 +832,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libgusb-dev">
@@ -875,6 +908,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="void">
       <package>libsoup-devel</package>
@@ -902,6 +936,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libtool-bin">
@@ -913,6 +948,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libstemmer-0">
@@ -927,6 +963,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libxml2-dev:s390x">
@@ -941,6 +978,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="locales">
@@ -953,6 +991,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="meson">
@@ -974,6 +1013,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="void">
       <package />
@@ -1021,6 +1061,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="pkg-config">
@@ -1032,6 +1073,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="void">
       <package />
@@ -1084,6 +1126,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libqmi-glib-dev">
@@ -1105,6 +1148,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libmbim-glib-dev">
@@ -1126,6 +1170,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="libpolkit-gobject-1-dev">
@@ -1147,6 +1192,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="python34-pip">
@@ -1181,6 +1227,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="gi-docgen">
@@ -1193,6 +1240,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="python3-typogrify">
@@ -1203,6 +1251,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="fedora">
       <package />
@@ -1219,6 +1268,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="python3-markdown">
@@ -1227,6 +1277,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="python3-jinja2">
@@ -1240,6 +1291,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="python3-gobject">
@@ -1265,6 +1317,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="python3-requests">
@@ -1304,6 +1357,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="void">
       <package>sqlite-devel</package>
@@ -1352,6 +1406,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="shared-mime-info">
@@ -1373,6 +1428,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="texlive-fonts-recommended">
@@ -1382,6 +1438,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="udev">
@@ -1394,6 +1451,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="umockdev">
@@ -1414,6 +1472,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="valac">
@@ -1438,6 +1497,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="valgrind">
@@ -1542,6 +1602,7 @@
   <dependency type="build" id="shellcheck">
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="fedora">
       <package>ShellCheck</package>
@@ -1559,6 +1620,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="fedora">
       <package>protobuf-c-devel</package>
@@ -1576,6 +1638,7 @@
     <distro id="ubuntu">
       <control />
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
     <distro id="fedora">
       <package />
@@ -1587,6 +1650,7 @@
   <dependency type="build" id="sudo">
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="python3-venv">
@@ -1596,6 +1660,7 @@
     </distro>
     <distro id="ubuntu">
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
 </dependencies>

@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [fedora, debian-x86_64, arch, debian-i386, void]
+        os: [ubuntu-20.04]
 
     steps:
       - name: Check out the repo
@@ -32,5 +32,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: fwupd/fwupd/fwupd-${{matrix.os}}
+          repository: dasharo/fwupd/fwupd-${{matrix.os}}
           tags: latest
