@@ -25,7 +25,7 @@ jobs:
           CI: true
         run: |
           echo $GITHUB_WORKSPACE
-          docker run --privileged -e CI=true -t -v $GITHUB_WORKSPACE:/github/workspace docker.pkg.github.com/dasharo/fwupd/fwupd-${{matrix.os}}:latest
+          docker run --privileged -e CI=false -t -v $GITHUB_WORKSPACE:/github/workspace docker.pkg.github.com/dasharo/fwupd/fwupd-${{matrix.os}}:latest
 
       - name: Save build artifacts
         uses: actions/upload-artifact@v2

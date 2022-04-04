@@ -76,7 +76,7 @@ mkdir -p ../dist
 cp $PACKAGES ../dist
 
 #if invoked outside of CI
-if [ ! -f /.dockerenv || ! "$CI" - "true" ]; then
+if [ ! -f /.dockerenv || ! "$CI" = "true" ]; then
 	echo "Not running in a container, please manually install packages"
 	exit 0
 fi
