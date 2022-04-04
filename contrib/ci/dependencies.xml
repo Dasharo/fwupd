@@ -265,6 +265,7 @@
         <version>(>= 12)</version>
       </control>
       <package variant="x86_64" />
+      <package variant="20.04" />
     </distro>
   </dependency>
   <dependency type="build" id="dbus-x11">
