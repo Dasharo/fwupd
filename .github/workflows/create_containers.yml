@@ -2,8 +2,6 @@ name: Create containers
 on:
   schedule:
     - cron:  '0 0 * * *'
-  push:
-    branches: [ dasharo-ci ]
 
 jobs:
   push_to_registry:
