@@ -1,4 +1,4 @@
-FROM ubuntu:devel
+FROM ubuntu:20.04
 %%%OS%%%
 ENV CI_NETWORK true
 ENV CC clang
@@ -6,4 +6,4 @@ RUN echo fubar > /etc/machine-id
 %%%ARCH_SPECIFIC_COMMAND%%%
 %%%INSTALL_DEPENDENCIES_COMMAND%%%
 WORKDIR /github/workspace
-CMD ["./contrib/ci/ubuntu.sh"]
+CMD ["./contrib/ci/debian.sh"]
