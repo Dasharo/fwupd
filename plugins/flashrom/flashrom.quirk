@@ -56,6 +56,8 @@ Plugin = flashrom
 Branch = dasharo
 [9a8c30e2-1b7e-5b28-9632-fc2fbf8cd0ba]
 Branch = dasharo
+[969f1a73-7dc3-57ae-9d71-a26d8b7ba2e0]
+Branch = dasharo
 
 # NovaCustom NS5x (HwId)
 [bab4f96c-34e4-5b92-a785-4e4489b1c395]
@@ -63,4 +65,6 @@ Plugin = flashrom
 
 # NovaCustom NS5x (Dasharo GUID)
 [43455705-4c7d-5440-b285-8362b67a5743]
+Branch = dasharo
+[1d63ac02-0d8f-5f0b-b9b5-b73aeef5e4f1]
 Branch = dasharo
