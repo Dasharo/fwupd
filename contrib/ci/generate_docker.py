@@ -61,7 +61,6 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write(
                     "\tDEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
                 )
-                wfd.write("\\\nRUN apt install tss2\\\n")
             elif OS == "arch":
                 wfd.write("RUN pacman -Syu --noconfirm --needed\\\n")
             elif OS == "void":

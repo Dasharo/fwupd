@@ -1594,6 +1594,35 @@
       <package>tpm2-tss-devel</package>
     </distro>
   </dependency>
+  <dependency type="build" id="libtss2-esys">
+    <distro id="arch">
+      <package></package>
+    </distro>
+    <distro id="centos">
+      <package></package>
+    </distro>
+    <distro id="fedora">
+      <package></package>
+    </distro>
+    <distro id="debian">
+      <control />
+      <package variant="x86_64">libtss2-esys0</package>
+      <package variant="s390x" />
+      <package variant="i386" />
+    </distro>
+    <distro id="ubuntu">
+      <control>
+        <inclusive>amd64</inclusive>
+        <inclusive>arm64</inclusive>
+        <inclusive>armhf</inclusive>
+        <inclusive>i386</inclusive>
+      </control>
+      <package variant="x86_64" />
+    </distro>
+    <distro id="void">
+      <package></package>
+    </distro>
+  </dependency>
   <dependency type="build" id="libgcrypt-devel">
     <distro id="fedora">
       <package />
