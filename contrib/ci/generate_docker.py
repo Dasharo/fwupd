@@ -59,6 +59,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("RUN yum -y install \\\n")
             elif OS == "debian" or OS == "ubuntu":
                 wfd.write("RUN apt update -qq\n")
+                wfd.write("RUN apt install git\n")
                 #tss2-esys install
                 wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss\n")
                 wfd.write("RUN cd tpm2-tss\n")
