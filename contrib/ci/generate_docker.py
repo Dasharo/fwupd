@@ -21,6 +21,7 @@ def get_container_cmd():
 
 
 directory = os.path.dirname(sys.argv[0])
+#TARGET = "ubuntu"
 TARGET = os.getenv("OS")
 
 if TARGET is None:
@@ -57,9 +58,16 @@ with open("Dockerfile", "w") as wfd:
             elif OS == "centos":
                 wfd.write("RUN yum -y install \\\n")
             elif OS == "debian" or OS == "ubuntu":
-                wfd.write("RUN apt update -qq && \\\n")
+                wfd.write("RUN apt update -qq\n")
+                #tss2-esys install
+                wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss\n")
+                wfd.write("RUN cd tpm2-tss\n")
+                wfd.write("RUN ./bootstrap\n")
+                wfd.write("RUN ./configure --enable-integration\n")
+                wfd.write("RUN make -j$(nproc)\n")
+                wfd.write("RUN make check\n")                
                 wfd.write(
-                    "\tDEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
+                    "DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
                 )
             elif OS == "arch":
                 wfd.write("RUN pacman -Syu --noconfirm --needed\\\n")
