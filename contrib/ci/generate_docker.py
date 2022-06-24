@@ -67,7 +67,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("RUN make -j$(nproc)\n")
                 wfd.write("RUN make check\n")                
                 wfd.write(
-                    "apt install -yq --no-install-recommends\\\n"
+                    "RUN DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
                 )
             elif OS == "arch":
                 wfd.write("RUN pacman -Syu --noconfirm --needed\\\n")
