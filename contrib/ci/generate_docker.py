@@ -72,7 +72,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("RUN make -j$(nproc) check && \\\n")
                 wfd.write("RUN make install && \\\n")
                 wfd.write("RUN ldconfig && \\\n")
-                wfd.write("ENV LD_LIBRARY_PATH /usr/local/lib && \\\n")
+                wfd.write("ENV LD_LIBRARY_PATH /usr/local/lib\n")
                 wfd.write(
                     "RUN DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
                 )
