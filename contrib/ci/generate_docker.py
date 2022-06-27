@@ -74,7 +74,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write(" make install && \\\n")
                 wfd.write(" ldconfig\n")
                 wfd.write("RUN echo config.log\n")
-                wfd.write("RUNecho /tmp/tpm2-tss/config.log\n")
+                wfd.write("RUN echo /tmp/tpm2-tss/config.log\n")
                 wfd.write(
                     "RUN DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
                 )
