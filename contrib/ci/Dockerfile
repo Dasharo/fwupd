@@ -3,15 +3,9 @@ ENV OS ubuntu
 ENV CI_NETWORK true
 ENV CC clang
 RUN echo fubar > /etc/machine-id
-RUN apt update -qq
-RUN git clone https://github.com/tpm2-software/tpm2-tss
-RUN cd tpm2-tss
-RUN ./bootstrap
-RUN ./configure --enable-integration
-RUN make -j$(nproc)
-RUN make check
-RUN gcc standalone-example.c -L=/usr/local/lib/ -ltss2-esys -o standalone-example
-DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt update -qq && \
+RUN DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\
 	abigail-tools \
 	abigail-tools \
 	bash-completion \
