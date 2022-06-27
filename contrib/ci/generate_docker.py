@@ -66,9 +66,9 @@ with open("Dockerfile", "w") as wfd:
                 
                 wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss.git\n")
                 wfd.write("WORKDIR /tmp/tpm2-tss\n")
-                wfd.write("copy ./tpm2-tss /tmp/tpm2-tss\n")
+                wfd.write("COPY ./tpm2-tss /tmp/tpm2-tss\n")
                 
-                wfd.write("./bootstrap && \\\n")
+                wfd.write("RUN ./bootstrap && \\\n")
                 wfd.write(" ./configure && \\\n")
                 wfd.write(" make -j$(nproc) && \\\n")
                 wfd.write(" make -j$(nproc) check && \\\n")
