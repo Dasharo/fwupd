@@ -67,6 +67,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss.git /tmp/tpm2-tss\n")
                 wfd.write("WORKDIR /tmp/tpm2-tss\n")
                 wfd.write("ENV LD_LIBRARY_PATH /usr/local/lib\n")
+                wfd.write("ENV CC gcc\n")
                 wfd.write("RUN ./bootstrap && \\\n")
                 wfd.write(" ./configure --enable-integration && \\\n")
                 wfd.write(" make -j$(nproc) && \\\n")
@@ -75,6 +76,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write(" ldconfig\n")
                 wfd.write("RUN echo config.log\n")
                 wfd.write("RUN echo /tmp/tpm2-tss/config.log\n")
+                wfd.write("ENV CC clang\n")
                 wfd.write(
                     "RUN DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
                 )
