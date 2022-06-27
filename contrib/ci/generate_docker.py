@@ -65,6 +65,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("RUN cd tpm2-tss\n")
                 wfd.write("RUN ls\n")
                 wfd.write("RUN ls tpm2-tss\n")
+                wfd.write("RUN chmod +x tpm2-tss\n")
                 wfd.write("RUN ./tpm2-tss/bootstrap\n")
                 wfd.write("RUN ./tpm2-tss/configure --enable-integration\n")
                 wfd.write("RUN cd tpm2-tss\n")
