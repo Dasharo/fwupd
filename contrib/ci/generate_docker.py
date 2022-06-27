@@ -63,8 +63,6 @@ with open("Dockerfile", "w") as wfd:
                 #tss2-esys install
                 wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss tpm2-tss\n")
                 wfd.write("RUN cd tpm2-tss\n")
-                wfd.write("RUN ls\n")
-                wfd.write("RUN ls -la tpm2-tss\n")
                 wfd.write("RUN pwd\n")
                 wfd.write("RUN chmod +x tpm2-tss\n")
                 wfd.write("RUN ./tpm2-tss/bootstrap\n")
