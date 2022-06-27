@@ -62,18 +62,17 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("RUN apt update -qq\n")
                 wfd.write("RUN apt install git -yq\n")
                 #tss2-esys install
-                wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc git libssl-dev libtool m4 net-tools pkg-config\n")
+                wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc libc6-dev git libssl-dev libtool m4 net-tools pkg-config\n")
                 
                 wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss.git /tmp/tpm2-tss\n")
                 wfd.write("WORKDIR /tmp/tpm2-tss\n")
-                
+                wfd.write("ENV LD_LIBRARY_PATH /usr/local/lib\n")
                 wfd.write("RUN ./bootstrap && \\\n")
-                wfd.write(" ./configure && \\\n")
+                wfd.write(" ./configure --enable-integration && \\\n")
                 wfd.write(" make -j$(nproc) && \\\n")
                 wfd.write(" make -j$(nproc) check && \\\n")
                 wfd.write(" make install && \\\n")
-                wfd.write(" ldconfig && \\\n")
-                wfd.write(" LD_LIBRARY_PATH /usr/local/lib\n")
+                wfd.write(" ldconfig\n")
                 wfd.write(
                     "RUN DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
                 )
