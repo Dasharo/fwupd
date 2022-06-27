@@ -71,7 +71,7 @@ with open("Dockerfile", "w") as wfd:
                 #wfd.write("RUN ./autogen.sh --with-tpm2 --with-openssl --prefix=/usr\\\n")
                 #wfd.write("make\\\n")
                 #wfd.write("make check\\\n")
-                w#fd.write("sudo make install\n")
+                #wfd.write("sudo make install\n")
 
 
                 # tss2-esys install
