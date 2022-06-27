@@ -64,9 +64,8 @@ with open("Dockerfile", "w") as wfd:
                 #tss2-esys install
                 wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc git libssl-dev libtool m4 net-tools pkg-config\n")
                 
-                wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss.git\n")
+                wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss.git /tmp/tpm2-tss\n")
                 wfd.write("WORKDIR /tmp/tpm2-tss\n")
-                wfd.write("COPY ./tpm2-tss /tmp/tpm2-tss\n")
                 
                 wfd.write("RUN ./bootstrap && \\\n")
                 wfd.write(" ./configure && \\\n")
