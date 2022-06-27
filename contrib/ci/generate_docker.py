@@ -61,13 +61,23 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("ARG DEBIAN_FRONTEND=noninteractive\n")
                 wfd.write("RUN apt update -qq\n")
                 wfd.write("RUN apt install git -yq\n")
-                #tss2-esys install
-                wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc libc6-dev git libssl-dev libtool m4 net-tools pkg-config libjson-c-dev libcurl4-openssl-dev\n")
                 
+                wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc libc6-dev git libssl-dev libtool m4 net-tools pkg-config libjson-c-dev libcurl4-openssl-dev\n")
+                wfd.write("ENV CC gcc\n")
+
+                # libtpms install
+                wfd.write("RUN git clone https://github.com/stefanberger/libtpms.git /tmp/libtpms\n")
+                wfd.write("WORKDIR /tmp/libtpms\n")
+                wfd.write("RUN ./autogen.sh --with-tpm2 --with-openssl --prefix=/usr\\\n")
+                wfd.write("make\\\n")
+                wfd.write("make check\\\n")
+                wfd.write("sudo make install\n")
+
+
+                # tss2-esys install
                 wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss.git /tmp/tpm2-tss\n")
                 wfd.write("WORKDIR /tmp/tpm2-tss\n")
                 wfd.write("ENV LD_LIBRARY_PATH /usr/local/lib\n")
-                wfd.write("ENV CC gcc\n")
                 wfd.write("RUN ./bootstrap && \\\n")
                 wfd.write(" ./configure --enable-integration && \\\n")
                 wfd.write(" make -j$(nproc) && \\\n")
