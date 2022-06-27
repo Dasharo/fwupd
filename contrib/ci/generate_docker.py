@@ -58,6 +58,7 @@ with open("Dockerfile", "w") as wfd:
             elif OS == "centos":
                 wfd.write("RUN yum -y install \\\n")
             elif OS == "debian" or OS == "ubuntu":
+                wfd.write("ARG DEBIAN_FRONTEND=noninteractive\n")
                 wfd.write("RUN apt update -qq\n")
                 wfd.write("RUN apt install git -yq\n")
                 #tss2-esys install
