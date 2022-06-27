@@ -62,7 +62,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("RUN apt update -qq\n")
                 wfd.write("RUN apt install git -yq\n")
                 
-                wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc libc6-dev git libssl-dev libtool m4 net-tools pkg-config libjson-c-dev libcurl4-openssl-dev iproute2\n")
+                wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc libc6-dev git libssl-dev libtool m4 net-tools pkg-config libjson-c-dev libcurl4-openssl-dev iproute2 uthash-dev\n")
                 wfd.write("ENV CC gcc\n")
 
                 # libtpms install
