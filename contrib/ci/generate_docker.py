@@ -73,8 +73,8 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write(" make -j$(nproc) check && \\\n")
                 wfd.write(" make install && \\\n")
                 wfd.write(" ldconfig\n")
-                wfd.write("echo config.log\n")
-                wfd.write("echo /tmp/tpm2-tss/config.log\n")
+                wfd.write("RUN echo config.log\n")
+                wfd.write("RUNecho /tmp/tpm2-tss/config.log\n")
                 wfd.write(
                     "RUN DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends\\\n"
                 )
