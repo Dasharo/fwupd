@@ -62,7 +62,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("RUN apt update -qq\n")
                 wfd.write("RUN apt install git -yq\n")
                 #tss2-esys install
-                wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc libc6-dev git libssl-dev libtool m4 net-tools pkg-config json-c\n")
+                wfd.write("RUN apt install -yq autoconf autoconf-archive automake build-essential g++ gcc libc6-dev git libssl-dev libtool m4 net-tools pkg-config libjson-c-dev\n")
                 
                 wfd.write("RUN git clone https://github.com/tpm2-software/tpm2-tss.git /tmp/tpm2-tss\n")
                 wfd.write("WORKDIR /tmp/tpm2-tss\n")
