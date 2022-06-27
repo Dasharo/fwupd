@@ -1,7 +1,7 @@
 name: Create containers
 on:
-  schedule:
-    - cron:  '0 0 * * *'
+  push:
+    branches: [ ci-verify2 ]
 
 jobs:
   push_to_registry:
