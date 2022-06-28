@@ -22,6 +22,7 @@ rm -rf ${root}/build
 mkdir -p ${root}/build
 chown nobody build ${root}/subprojects
 echo "###############################"
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 echo "pkg_config_path: " $PKG_CONFIG_PATH
 echo "find:"
 find . -name *tss2-esys*

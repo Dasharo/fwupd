@@ -80,7 +80,7 @@ with open("Dockerfile", "w") as wfd:
                 wfd.write("WORKDIR /tmp/tpm2-tss\n")
                 wfd.write("ENV LD_LIBRARY_PATH /usr/local/lib\n")
                 wfd.write("RUN ./bootstrap && \\\n")
-                wfd.write(" ./configure --with-udevrulesdir=/etc/udev/rules.d --with-udevrulesprefix=70- --sysconfdir=/etc --localstatedir=/var --runstatedir=/run && \\\n")
+                wfd.write(" PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ./configure --with-udevrulesdir=/etc/udev/rules.d --with-udevrulesprefix=70- --sysconfdir=/etc --localstatedir=/var --runstatedir=/run && \\\n")
                 wfd.write(" make -j$(nproc) && \\\n")
                 wfd.write(" make install && \\\n")
                 wfd.write(" ldconfig\n")
