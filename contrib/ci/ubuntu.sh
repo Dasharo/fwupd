@@ -26,6 +26,7 @@ PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 echo "pkg_config_path: " $PKG_CONFIG_PATH
 echo "find:"
 find . -name *tss2-esys*
+sudo apt install libtss2-esys0
 echo "###############################"
 sudo -u nobody meson build -Dman=false -Ddocs=docgen -Dgusb:tests=false -Dplugin_platform_integrity=true --prefix=${root}/dist
 #build with clang
