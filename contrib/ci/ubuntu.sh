@@ -26,6 +26,7 @@ PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 echo "pkg_config_path: " $PKG_CONFIG_PATH
 echo "find:"
 find . -name *tss2-esys*
+sudo apt install -yq autoconf autoconf-archive automake build-essential g++ gcc libc6-dev git libssl-dev libtool m4 net-tools pkg-config libjson-c-dev libcurl4-openssl-dev iproute2 uthash-dev
 sudo apt install libtss2-esys0 tss2 -yq
 
 
