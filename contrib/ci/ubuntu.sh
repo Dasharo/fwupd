@@ -22,7 +22,9 @@ rm -rf ${root}/build
 mkdir -p ${root}/build
 chown nobody build ${root}/subprojects
 echo "###############################"
-echo $PKG_CONFIG_PATH
+echo "pkg_config_path: " $PKG_CONFIG_PATH
+echo "find:"
+find . -name *tss2-esys*
 echo "###############################"
 sudo -u nobody meson build -Dman=false -Ddocs=docgen -Dgusb:tests=false -Dplugin_platform_integrity=true --prefix=${root}/dist
 #build with clang
