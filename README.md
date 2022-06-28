@@ -137,3 +137,4 @@ There are several automated fuzzing tests in fwupd. These take some time to run:
     ninja fuzz-firmware
     ninja fuzz-tpm-eventlog
 .
+.
