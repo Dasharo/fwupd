@@ -28,7 +28,7 @@ echo "find:"
 find . -name *tss2-esys*
 sudo apt install libtss2-esys0 tss2 -yq
 echo "###############################"
-sudo -u nobody meson build -Dman=false -Ddocs=docgen -Dgusb:tests=false -Dplugin_platform_integrity=true --prefix=${root}/dist
+sudo -u nobody meson build
 #build with clang
 sudo -u nobody ninja -C ${root}/build test -v
 
