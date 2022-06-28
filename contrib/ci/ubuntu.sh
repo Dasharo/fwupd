@@ -31,6 +31,7 @@ sudo apt install libtss2-esys0 tss2 -yq
 
 git clone https://github.com/tpm2-software/tpm2-tss.git /tmp/tpm2-tss
 LD_LIBRARY_PATH=/usr/local/lib
+cd /tmp/tpm2-tss
 ./bootstrap
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ./configure --with-udevrulesdir=/etc/udev/rules.d --with-udevrulesprefix=70- --sysconfdir=/etc --localstatedir=/var --runstatedir=/run
 make -j$(nproc)
