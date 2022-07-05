@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Ubuntu packages
         run: |
-          docker run --rm -w $PWD -v $PWD:$PWD ghcr.io/dasharo/fwupd/fwupd-${{matrix.os}}:latest ./contrib/ci/debian.sh
+          docker run --rm -w $PWD -v $PWD:$PWD -e OS=ubuntu-x86_64 -e DEB_BUILD_OPTIONS=nocheck ghcr.io/dasharo/fwupd/fwupd-${{matrix.os}}:latest ./contrib/ci/debian.sh
 
       - name: Save build artifacts
         uses: actions/upload-artifact@v2
