@@ -2,8 +2,6 @@ name: Create Dasharo/fwupd containers
 on:
   schedule:
     - cron:  '0 0 * * *'
-  push:
-    branches: [ ci-rework ]
 
 env:
   REGISTRY: ghcr.io
