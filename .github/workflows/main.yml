@@ -1,79 +1,44 @@
-name: Continuous Integration
+name: Build Ubuntu packages
 on:
   push:
-    branches: [ main ]
+    branches: [ ci-rework ]
   pull_request:
-    branches: [ main ]
+    branches:
+      - dasharo-develop
+      - dasharo-release
 
 jobs:
-  pre-commit:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Refresh dependencies
-        run: sudo apt update
-      - name: Install dependencies
-        run: sudo apt install shellcheck clang-format -y
-      - name: Run pre-commit hooks
-        run: |
-          ./contrib/setup
-          source venv/bin/activate
-          sed -i "/no-commit-to-branch/,+1d" .pre-commit-config.yaml
-          pre-commit run --hook-stage commit --all-files
-  abi:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Refresh dependencies
-        run: sudo apt update
-      - name: Install dependencies
-        run: sudo ./contrib/ci/fwupd_setup_helpers.py install-dependencies -o ubuntu --yes
-      - name: Check ABI
-        run: ./contrib/ci/check-abi $(git describe --abbrev=0 --tags) $(git rev-parse HEAD)
-
   build:
-    runs-on: ubuntu-latest
+    runs-on: [ self-hosted, builder ]
     strategy:
       matrix:
-        os: [fedora, debian-x86_64, arch, debian-i386, void]
+        os: [ ubuntu-20.04, ubuntu-22.04 ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Docker login
-        run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Build in container
-        env:
-          CI_NETWORK: true
-          CI: true
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build Ubuntu packages
         run: |
-          echo $GITHUB_WORKSPACE
-          docker run --privileged -e CI=true -t -v $GITHUB_WORKSPACE:/github/workspace docker.pkg.github.com/fwupd/fwupd/fwupd-${{matrix.os}}:latest
+          docker run --rm -w $PWD -v $PWD:$PWD ghcr.io/dasharo/fwupd/fwupd-${{matrix.os}}:latest ./contrib/ci/debian.sh
 
-  fuzzing:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-    - name: Build Fuzzers
-      id: build
-      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@master
-      with:
-        oss-fuzz-project-name: 'fwupd'
-        dry-run: false
-    - name: Run Fuzzers
-      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@master
-      with:
-        oss-fuzz-project-name: 'fwupd'
-        fuzz-seconds: 300
-        dry-run: false
-    - name: Upload Crash
-      uses: actions/upload-artifact@v1
-      if: failure() && steps.build.outcome == 'success'
-      with:
-        name: artifacts
-        path: ./out/artifacts
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dasharo-fwupd
+          path: |
+            dist/*.deb
+          retention-days: 7
 
+      - name: Get Actions user id
+        id: get_uid
+        run: |
+          actions_user_id=`id -u $USER`
+          echo $actions_user_id
+          echo ::set-output name=uid::$actions_user_id
+
+      - name: Correct Ownership in GITHUB_WORKSPACE directory
+        uses: peter-murray/reset-workspace-ownership-action@v1
+        with:
+          user_id: ${{ steps.get_uid.outputs.uid }}
+
+# TODO: create job uploading packages from tags to package repository
