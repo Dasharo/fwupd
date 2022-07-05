@@ -1,4 +1,4 @@
-name: Create containers
+name: Create Dasharo/fwupd containers
 on:
   schedule:
     - cron:  '0 0 * * *'
