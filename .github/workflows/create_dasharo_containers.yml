@@ -5,17 +5,13 @@ on:
   push:
     branches: [ ci-rework ]
 
-jobs:
-  push_to_registry:
-    runs-on: [self-hosted, builder]
-
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push-image:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, builder]
     permissions:
       contents: read
       packages: write
