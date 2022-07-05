@@ -1,7 +1,7 @@
 name: Continuous Integration
 on:
   push:
-    branches: [ dasharo-release ]
+    branches: [ ci-test ]
   pull_request:
     branches:
       - dasharo-develop
