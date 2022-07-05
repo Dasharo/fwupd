@@ -48,5 +48,5 @@ jobs:
           context: .
           file: Dockerfile.${{matrix.os}}
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}, dasharo/fwupd-${{matrix.os}}:latest
           labels: ${{ steps.meta.outputs.labels }}
