@@ -5,32 +5,43 @@ on:
 
 jobs:
   push_to_registry:
+    runs-on: [self-hosted, builder]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     strategy:
-      fail-fast: false
       matrix:
-        os: [fedora, debian-x86_64, arch, debian-i386, void]
+        os: [ ubuntu-20.04, ubuntu-22.04 ]
 
     steps:
-      - name: Check out the repo
+      - name: Checkout repository
         uses: actions/checkout@v2
-      # TODO(#122): Remove step when https://github.com/actions/virtual-environments/issues/2658 fixed
-      - name: update runc # https://github.com/actions/virtual-environments/issues/2698#issuecomment-779262068
-        if: startsWith(matrix.os, 'arch')
-        run: |
-          sudo apt-get install --assume-yes libseccomp-dev
-          git clone https://github.com/opencontainers/runc
-          cd runc && git checkout v1.0.0-rc93 && make -j`nproc` && sudo make install
-          cd .. && rm --recursive runc
-      - name: "Generate Dockerfile"
-        env:
-          OS: ${{ matrix.os }}
-        run: ./contrib/ci/generate_docker.py
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: fwupd/fwupd/fwupd-${{matrix.os}}
-          tags: latest
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/dasharo/fwupd-${{matrix.os}}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
