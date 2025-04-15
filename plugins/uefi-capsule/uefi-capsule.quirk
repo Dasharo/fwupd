@@ -61,3 +61,35 @@ VersionFormat = bcd
 # HP Dev One
 [9f7962c7-7d0e-473d-8a01-c168912f1f14]
 Flags = no-ux-capsule
+
+# NovaCustom NS5x 11th Gen
+[2c033395-4de7-4de5-b610-eafa2e0b6300]
+VersionFormat = dell-bios-msb
+
+# NovaCustom NS5x 12th Gen
+[742d22fb-1043-4994-9154-7a30679de5f0]
+VersionFormat = dell-bios-msb
+
+# NovaCustom NV4x 11th Gen
+[ffe49861-809c-4aa4-8d3e-2b1640b3c96c]
+VersionFormat = dell-bios-msb
+
+# NovaCustom NV4x 12th Gen
+[b79b7279-79a4-47cf-ab2f-8636c541f2d0]
+VersionFormat = dell-bios-msb
+
+# NovaCustom V540TU
+[f4deb4f3-f673-48fe-a481-627357b00b6a]
+VersionFormat = dell-bios-msb
+
+# NovaCustom V540TNx
+[ec380f40-ad1b-40e9-b5a2-99ab56be66d3]
+VersionFormat = dell-bios-msb
+
+# NovaCustom V560TU
+[4d7c36d7-a987-4c54-b49c-ea557c75e1ee]
+VersionFormat = dell-bios-msb
+
+# NovaCustom V560TNx
+[d5f421ef-8c11-4f1f-903d-49acf69530a6]
+VersionFormat = dell-bios-msb
